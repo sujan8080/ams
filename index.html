@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,88 +9,89 @@
 
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-}
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
 
-section {
-    padding: 20px;
-    text-align: center;
-}
+        section {
+            padding: 20px;
+            text-align: center;
+        }
 
-section#home {
-    background-color: #f2f2f2;
-}
+        section#home {
+            background-color: #f2f2f2;
+        }
 
-button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-button:hover {
-    background-color: #45a049;
-}
+        button:hover {
+            background-color: #45a049;
+        }
 
-form {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: left;
-}
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
 
-form label {
-    display: block;
-    margin: 10px 0 5px;
-}
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
 
-form input, form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-footer {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
-    
+
 </head>
+
 <body>
 
     <header>
@@ -99,23 +101,24 @@ footer {
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#login">login</a></li>
-                <li><a href="#signup">signup</a></li>
+                <li><a href="students/studentLogin.html">login</a></li>
+                <li><a href="students/studentRegister.html">signup</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <section id="home">
         <h2>Manage Admissions Effortlessly</h2>
         <p>Our system helps you streamline the admission process with ease and efficiency.</p>
         <button onclick="learnMore()">Learn More</button>
     </section>
-    
+
     <section id="about">
         <h2>About Us</h2>
-        <p>We provide a comprehensive solution to manage student admissions. Our system is designed to be user-friendly and efficient.</p>
+        <p>We provide a comprehensive solution to manage student admissions. Our system is designed to be user-friendly
+            and efficient.</p>
     </section>
-    
+
     <section id="contact">
         <h2>Contact Us</h2>
         <form id="contactForm">
@@ -128,20 +131,21 @@ footer {
             <button type="submit">Submit</button>
         </form>
     </section>
-    
+
     <footer>
         <p>&copy; 2024 Admission Management System. All rights reserved.</p>
     </footer>
 
     <!-- <script src="script.js"></script> -->
-     <script>function learnMore() {
-        alert("This system provides an efficient way to manage student admissions. Contact us for more details!");
-    }
-    
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert("Thank you for contacting us, " + document.getElementById('name').value + "!");
-    });
+    <script>function learnMore() {
+            alert("This system provides an efficient way to manage student admissions. Contact us for more details!");
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert("Thank you for contacting us, " + document.getElementById('name').value + "!");
+        });
     </script>
 </body>
+
 </html>
