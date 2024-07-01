@@ -1,7 +1,5 @@
 <?php
-
-require_once ('../../config/DatabaseConnection.php');
-
+require_once(__DIR__."/../../config/DatabaseConnection.php");
 class CoursesManager extends DatabaseConnection
 {
     function __construct()
@@ -10,22 +8,25 @@ class CoursesManager extends DatabaseConnection
     }
     public function getCourses()
     {
-
         $response = [];
         $sql = "SELECT * FROM courses";
         $result = $this->conn->query($sql);
         if ($result) {
             while ($row = $result->fetch_assoc()) {
-                $response[] = $row;
+                $response['data'][] = $row;
             }
-            $response = [
-                'success' => true,
-                'error' => "Success",
-                'message' => 'Courses found'
-            ];
+            $response['success'] = true;
+            $response['error'] = "Success";
+            $response['message'] = 'Courses found';
+            
+        } else {
+            $response['success'] = false;
+            $response['error'] = "False";
+            $response['message'] = 'Courses not found';
         }
-
+        return json_encode($response);
     }
+    
     public function getCoursesByCourseId($course_id)
     {
     }
