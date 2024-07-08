@@ -99,6 +99,7 @@ class AdminManager extends DatabaseConnection
         return json_encode($response);
     }
     
+    
 function logout(){
     session_start();
         // $_SESSION = array();
