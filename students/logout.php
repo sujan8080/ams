@@ -1,7 +1,7 @@
 <?php
-require_once('studentManager.php');
+require_once 'StudentManager.php';
 
-$studentManager=new studentManager();
+$studentManager = new StudentManager();
 
 $studentManager->logout();
 

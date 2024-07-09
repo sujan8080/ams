@@ -28,24 +28,33 @@ class StudentManager extends DatabaseConnection
         $hashedPassword = md5($password);
 
         // Use prepared statements to prevent SQL injection
-        $stmt = $this->conn->prepare("SELECT student_email FROM students WHERE student_email = ? AND password = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM students WHERE student_email = ? AND password = ?");
         $stmt->bind_param("ss", $email, $hashedPassword);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        $student_id = mysqli_fetch_assoc($result);
+        $student = mysqli_fetch_assoc($result);
 
 
         if ($result && $result->num_rows > 0) {
-            $_SESSION['student_id'] = $student_id['student_id'];
-
-            header('Location:studentDashboard.php');
-
-            $response = [
-                'success' => true,
-                'error' => 'Success',
-                'message' => 'Login successfully'
-            ];
+            $is_verified = $student['is_admission_verified'];
+            if ($is_verified === "approved") {
+                session_start();
+                $_SESSION['student_id'] = $student['student_id'];
+                header('Location:studentDashboard.php');
+                $response = [
+                    'success' => true,
+                    'error' => 'Success',
+                    'message' => 'Login successfully'
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'error' => 'Failed',
+                    'message' => 'Student is not approved',
+                    'status' => $is_verified
+                ];
+            }
         } else {
             $response = [
                 'success' => false,
@@ -101,6 +110,66 @@ class StudentManager extends DatabaseConnection
         return json_encode($response);
 
     }
+
+    public function getStudentDetails($student_id)
+    {
+        $response = [];
+
+        // Query to retrieve student details based on ID
+        $sql = "SELECT * FROM students WHERE student_id = ?";
+
+        // Using prepared statement to prevent SQL injection
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $student_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $response['success'] = true;
+            $response['data'] = $row; // Assign fetched row to 'data' key
+            $response['message'] = 'Student details found';
+        } else {
+            $response['success'] = false;
+            $response['message'] = 'Student not found';
+        }
+
+        return json_encode($response);
+    }
+    public function getStudentName($student_id)
+    {
+        $response = [];
+
+        // Query to retrieve student name based on ID
+        $sql = "SELECT student_fullname FROM students WHERE student_id = ?";
+
+        // Using prepared statement to prevent SQL injection
+        $stmt = $this->conn->prepare($sql);
+
+        if (!$stmt) {
+            $response['success'] = false;
+            $response['message'] = 'Database error: ' . $this->conn->error;
+            return json_encode($response);
+        }
+
+        $stmt->bind_param("i", $student_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $response['success'] = true;
+            $response['data'] = $row['student_fullname']; // Assign fetched name to 'data' key
+            $response['message'] = 'Student name found';
+        } else {
+            $response['success'] = false;
+            $response['message'] = 'Student not found';
+        }
+
+        return json_encode($response);
+    }
+
+
 
 
     function studentList()
@@ -218,17 +287,17 @@ class StudentManager extends DatabaseConnection
         return json_encode($response);
     }
 
+    function logout()
+    {
+        session_start();
+        // $_SESSION = array();
+        session_destroy();
+        header("Location:studentLogin.php");
+        exit();
+    }
 }
 
 
-function logout()
-{
-    session_start();
-    // $_SESSION = array();
-    session_destroy();
-    header("Location:studentLogin.php");
-    exit();
-}
 
 
-?>
+

@@ -11,8 +11,7 @@ if (!empty($_POST)) {
 
     $response = $studentManager->studentLogin($email, $password);
     $responseDecode = json_decode($response, true);
-    print_r($responseDecode);
-
+    // print_r($responseDecode);
 
 }
 
@@ -77,12 +76,21 @@ if (!empty($_POST)) {
         .login-btn:hover {
             background-color: #45a049;
         }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
         <h2>Login</h2>
+
         <form action="" method="post">
             <div class="form-group">
                 <label for="username">Email</label>
@@ -92,6 +100,15 @@ if (!empty($_POST)) {
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
+
+            <?php if (!empty($responseDecode) && isset($responseDecode['success'])) { ?>
+                <?php if ($responseDecode['success']) { ?>
+                    <p class="success"><?= $responseDecode['message']; ?></p>
+                <?php } else { ?>
+                    <p class="error"><?= $responseDecode['message'];
+                    // echo "$responseDecode[status]"; ?></p>
+                <?php } ?>
+            <?php } ?>
 
             <button type="submit" class="login-btn">Login</button><br><br>
 

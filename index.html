@@ -38,25 +38,25 @@
         }
 
         section {
-            padding: 20px;
+            padding: 8px;
             text-align: center;
         }
 
-        section#home {
-            background-color: #f2f2f2;
-        }
 
         button {
             padding: 10px 20px;
+            font-size: 18px;
             margin-top: 10px;
-            background-color: #af4c9e;
-            color: white;
-            border: none;
+            background-color: transparent;
+            border-color: #af4c93;
+            color: rgb(5, 4, 10);
             cursor: pointer;
+            /* border-style: none; */
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: purple;
+            color: white;
         }
 
         form {
@@ -84,9 +84,233 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: fixed;
+            position: relative;
             width: 100%;
             bottom: 0;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('bg.jpeg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* color: white; */
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            background-color: transparent;
+            /* Dark overlay */
+            padding: 20px;
+            border-radius: 8px;
+
+        }
+
+        .hero-content h2 {
+            color: purple;
+            font-size: 30px;
+        }
+
+        .about-content {
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .column {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            flex: 1 1 30%;
+            /* Adjust the width here */
+            box-sizing: border-box;
+            margin: 10px;
+        }
+
+        .column h2 {
+            color: #007bff;
+        }
+
+        .column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .column li {
+            background: url('checkmark.png') no-repeat left center;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .column {
+                flex: 1 1 100%;
+                /* Adjust the width for smaller screens */
+            }
+        }
+
+        .core-values {
+            padding: 20px;
+            max-width: 1200px;
+
+            margin: 25px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .core-values h2 {
+            text-align: center;
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .values-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .value-box {
+            flex: 1 1 calc(33.333% - 40px);
+            /* Three columns layout with 20px gap */
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        .value-box h3 {
+            color: red;
+            margin-top: 0;
+        }
+
+        .value-box p {
+            margin: 10px 0 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .value-box {
+                flex: 1 1 100%;
+                /* Full width for smaller screens */
+            }
+        }
+
+        .available-programs {
+            padding: 20px;
+            max-width: 100%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .available-programs h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .programs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .program-box {
+            flex: 1 1 calc(25% - 40px);
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .program-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .program-box h3 {
+            color: #007bff;
+            margin-top: 10px;
+        }
+
+        .program-box p {
+            margin: 10px 0 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .program-box {
+                flex: 1 1 100%;
+            }
+        }
+
+        .contact-us {
+            padding: 20px;
+            max-width: 100%;
+            margin: 20px auto;
+            border-radius: 8px;
+            /* background: url('https://t3.ftcdn.net/jpg/04/81/31/66/360_F_481316696_cPzBNRfqMpbq2cx2soWytWAjhzZYByS4.jpg') no-repeat center center/cover; */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-us h2 {
+            text-align: center;
+            color: #007bff;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
         }
     </style>
 
@@ -99,38 +323,151 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about-content">About</a></li>
+                <li><a href="#available-programs">Program</a></li>
+                <li><a href="#contact-us">Contact</a></li>
                 <li><a href="students/studentLogin.php">Login</a></li>
-                <li><a href="admin/index.php">Admin</a></li>
+
             </ul>
         </nav>
     </header>
 
     <section id="home">
-        <h2>Manage Admissions Effortlessly</h2>
-        <p>Our system helps you streamline the admission process with ease and efficiency.</p>
-        <button onclick="learnMore()">Learn More</button>
+        <header class="hero">
+            <div class="hero-content">
+                <h2>Manage Admissions Effortlessly</h2>
+
+                <p>Our system helps you streamline the admission process with ease and efficiency.</p>
+                <!-- <p>Your journey begins here</p> -->
+                <button onclick="learnMore()">Learn More</button>
+            </div>
+        </header>
     </section>
 
-    <section id="about">
-        <h2>About Us</h2>
-        <p>We provide a comprehensive solution to manage student admissions. Our system is designed to be user-friendly
-            and efficient.</p>
+
+
+    <section id="about-content">
+        <div class="container">
+            <div class="column">
+                <h2>About Us</h2>
+                <p>We provide a comprehensive solution to manage student admissions. Our system is designed to be
+                    user-friendly and efficient.</p>
+            </div>
+
+            <div class="column">
+                <h2>Our Vision And Mission</h2>
+                <p>
+                    Our Vision & Mission
+                    "To empower the nation through generation of computer literates and competent IT professionals who
+                    could serve as valuable resource and responsible innovative citizens."
+
+                    "Broadway Infosys Nepal's team is and will be dedicated to develop and impart quality IT training
+                    and service to all; achieving excellence in creative, innovative and up to-date teaching-learning,
+                    facilitating effective interactions among faculty, management and students and acting as a
+                    contributing institution for the employees, society and all stakeholders."</p>
+            </div>
+
+            <div class="column">
+                <h2>Our Team</h2>
+                <p>We have a dedicated team of professionals working tirelessly to ensure the best experience for our
+                    users.</p>
+            </div>
+        </div>
+    </section>
+    <section class="core-values">
+        <h2>Our Core Values</h2>
+        <div class="values-container">
+            <div class="value-box">
+                <h3>People</h3>
+                <p>We attract and train the great minds. Our trainees are our greatest focus. We treat each other with
+                    respect and dignity. We are always committed towards producing satisfied trainees. Build long-term
+                    relationship with all the trainees, instructors and other stakeholders.</p>
+            </div>
+            <div class="value-box">
+                <h3>Leadership</h3>
+                <p>We have a well-defined vision that is effectively communicated to our trainees, instructors and all
+                    the stakeholders. We don't hesitate to take risks and lead from the front in pressing situations. We
+                    believe in producing leaders rather than followers. We believe IT skills coupled with leadership
+                    qualities produce an unbeatable IT professional.</p>
+            </div>
+            <div class="value-box">
+                <h3>Trust</h3>
+                <p>We are determined to serve the stakeholders on what matters the most. We have a consistent desire to
+                    improve the quality of training and win the market. We promote transparency in our services.</p>
+            </div>
+            <div class="value-box">
+                <h3>Ethics</h3>
+                <p>Maintain the highest ethical standards with trainees, instructors, communities and all other
+                    stakeholders. Be accountable to our services and ethical practices. We always encourage honest
+                    feedback and suggestions regarding our services.</p>
+            </div>
+            <div class="value-box">
+                <h3>Social Responsibility</h3>
+                <p>We believe sense of social responsibility adds value to any business. We are proactive in helping the
+                    society during crisis situations. We make sure our trainees also become a socially responsible
+                    individual.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form id="contactForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
+
+    <section id="available-programs">
+        <h2>Available Programs</h2>
+        <div class="programs-container">
+            <div class="program-box">
+                <img src="bca.jpeg" alt="BCA Program">
+                <h3>BCA</h3>
+                <p>Bachelor of Computer Applications</p>
+            </div>
+            <div class="program-box">
+                <img src="bbm.jpeg" alt="BBM Program">
+                <h3>BBM</h3>
+                <p>Bachelor of Business Management</p>
+            </div>
+            <div class="program-box">
+                <img src="bit.jpeg" alt="BIT Program">
+                <h3>BIT</h3>
+                <p>Bachelor of Information Technology</p>
+            </div>
+            <div class="program-box">
+                <img src="bsc.jpeg" alt="MIT Program">
+                <h3>MIT</h3>
+                <p>Master of Information Technology</p>
+            </div>
+        </div>
     </section>
+
+
+    <section id="contact-us">
+        <div>
+            <h2>Contact Us</h2>
+        </div>
+        <!-- <div class="contact-main-container">
+            <div class="contact-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQyedFlnG1jpc6h6Mlp9lEUut5_al2CZJYuw&s"
+                    alt="">
+            </div> -->
+        <div class="form">
+            <form action="submit_contact.php" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        </div>
+    </section>
+
+
 
     <footer>
         <p>&copy; 2024 Admission Management System. All rights reserved.</p>
