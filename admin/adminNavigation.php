@@ -55,13 +55,14 @@
 <body>
 
     <div class="navbar">
-        <a href="#" class="logo">Your Logo</a>
+        <a href="" class="logo">ADMIN</a>
         <a href="adminDashboard.php">Dashboard</a>
         <a href="studentList.php">Student List</a>
         <a href="profile.php">Profile</a>
         <a href="logout.php">Logout</a>
     </div>
 
+    
 
 </body>
 

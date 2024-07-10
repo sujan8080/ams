@@ -11,15 +11,15 @@ if(!empty($_POST)){
     $response = $courseManager->addCourse($course_name, $description);
     $responseDecode = json_decode($response, true);
 
-    if (!empty($responseDecode) && isset($responseDecode['success'])) {
-        $_SESSION['success_message'] = $responseDecode['message'];
-        header("Location: {$_SERVER['HTTP_REFERER']}");
-        exit;
-    } else {
-        $_SESSION['error_message'] = $responseDecode['message'];
-        header("Location: {$_SERVER['HTTP_REFERER']}");
-        exit();
-    }
+    // if (!empty($responseDecode) && isset($responseDecode['success'])) {
+    //     $_SESSION['success_message'] = $responseDecode['message'];
+    //     header("Location: {$_SERVER['HTTP_REFERER']}");
+    //     exit;
+    // } else {
+    //     $_SESSION['error_message'] = $responseDecode['message'];
+    //     header("Location: {$_SERVER['HTTP_REFERER']}");
+    //     exit();
+    // }
     // print_r($_POST);
 }
 
@@ -32,6 +32,12 @@ if(!empty($_POST)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Course</title>
     <style>
+        .success{
+            color:green;
+        }
+        .error{
+            color:red;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -84,6 +90,15 @@ if(!empty($_POST)){
 
 <div class="add-course-form">
     <h2>Add New Course</h2>
+    <?php if (!empty($responseDecode) && isset($responseDecode['success'])) { ?>
+                <?php if ($responseDecode['success']) { ?>
+                    <p class="success"><?= $responseDecode['message']; ?></p>
+                <?php } else { ?>
+                    <p class="error"><?= $responseDecode['message'];
+                    // echo "$responseDecode[status]"; ?></p>
+                <?php } ?>
+            <?php } ?>
+   
     <form action="" method="post">
         <div class="form-group">
             <label for="course_name">Course Name</label>

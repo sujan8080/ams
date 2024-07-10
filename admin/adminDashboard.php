@@ -1,11 +1,19 @@
+<?php
+require_once('courses/CoursesManager.php');
+$courseManager = new CoursesManager();
+$response = $courseManager->courseList();
+$responseDecode = json_decode($response,true);
+
+// print_r($responseDecode);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
 
     <style>
         body {
@@ -90,38 +98,38 @@
 </head>
 
 <body>
-    <?php require_once ('adminNavigation.php'); ?>
+    <?php require_once('adminNavigation.php'); ?>
 
     <div class="view-courses-btn">
-        <a href="courses/addCourse.php" class="btn">Add Courses</a>
+        <a href="courses/addCourse.php" style="background-color:green;" class="btn">Add Courses</a>
     </div>
 
     <div class="course-list">
+    <?php
+    if (!empty($responseDecode) && isset($responseDecode['success']) == true) {
+                foreach ($responseDecode['data'] as $course) {
+                    ?>
         <div class="course-item">
             <div>
-                <div class="course-title">Course Title 1</div>
-                <div class="course-description">This is a description of Course 1.</div>
+                <div class="course-title"><?= $course['course_name']; ?></div>
+                <!-- <div class="course-description"><?= $course['course_description']; ?></div> -->
             </div>
             <div class="course-actions">
-                <a href="#" class="btn">View</a>
+                <a href="courses/editCourse.php?course_id=<?= $course['course_id'];?>" class="btn" >Edit</a>
+                <a href="courses/deleteCourse.php?course_id=<?= $course['course_id'];?>" class="btn" style="background-color:red;">Delete</a>
             </div>
         </div>
-        <div class="course-item">
-            <div>
-                <div class="course-title">Course Title 2</div>
-                <div class="course-description">This is a description of Course 2.</div>
-            </div>
-            <div class="course-actions">
-                <a href="#" class="btn">View</a>
-            </div>
-        </div>
+       
+    
+        <?php } }?>
+    
         <!-- Add more course items as needed -->
     </div>
+    <?php require_once ('adminNavigation.php'); ?>
+
 
 
 
 </body>
-
-</html>
 
 </html>

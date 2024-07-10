@@ -87,5 +87,68 @@ class CoursesManager extends DatabaseConnection
         
         return json_encode($response);
     }
+
+
+    public function deleteCourse($course_id)
+    {
+        $response = [];
+        
+        $sql = "DELETE FROM courses WHERE course_id = ?";
+        
+        $stmt = $this->conn->prepare($sql);
+        
+        if ($stmt) {
+            $stmt->bind_param("i", $course_id);
+            
+            if ($stmt->execute()) {
+                if ($stmt->affected_rows > 0) {
+                    $response['success'] = true;
+                    $response['message'] = 'Course deleted successfully.';
+                } else {
+                    $response['success'] = false;
+                    $response['message'] = 'Course not found or already deleted.';
+                }
+            } else {
+                $response['success'] = false;
+                $response['message'] = 'Failed to delete course: ' . $stmt->error;
+            }
+            
+            $stmt->close();
+        } else {
+            $response['success'] = false;
+            $response['message'] = 'Database error: ' . $this->conn->error;
+        }
+        
+        return json_encode($response);
+    }
+    
+    function courseList()
+    {
+        $response = [];
+        // $sql = "SELECT students.*, courses.*  FROM students
+        // JOIN courses 
+        // ON courses.course_id = students.course_id "
+        // Where students.student_id='$student_id';
+        
+        $sql="SELECT * FROM courses";
+
+        $result = $this->conn->query($sql);
+        if ($result) {
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $response['data'][] = $row;
+                }
+                $response['success'] = true;
+                $response['error'] = 'Success';
+                $response['message'] = 'course found';
+            }
+        } else {
+            $response['success'] = false;
+            $response['error'] = "Failed";
+            $response["message"] = "No course found";
+        }
+        return json_encode($response);
+    
+    }
 }
 ?>
